@@ -4,15 +4,8 @@ A comprehensive FastAPI-based multi-tenant SaaS platform that combines platform 
 
 ## Features
 
-### Part A: Multi-Tenant Platform (60% of assessment)
-
-- ✅ **Multi-tenant data isolation** using database-level security
-- ✅ **JWT-based authentication** with role management
-- ✅ **RESTful API endpoints** for user and organization operations
-- ✅ **Audit logging** for all data modifications
-- ✅ **API rate limiting** and input validation
-
-### Part B: External Integration Engine (40% of assessment)
+### Multi-Tenant Platform
+### External Integration Engine
 
 - ✅ **Webhook processing** from multiple external services
 - ✅ **Async event handling** with retry logic and failure recovery
