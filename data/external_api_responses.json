@@ -1,0 +1,90 @@
+{
+  "user_service_api": {
+    "get_user": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "user_id": "ext_user_12345",
+          "email": "sarah.johnson@techcorp.com",
+          "first_name": "Sarah",
+          "last_name": "Johnson",
+          "department": "Engineering",
+          "title": "VP Engineering",
+          "status": "active",
+          "manager_id": "ext_user_00001",
+          "hire_date": "2022-01-15",
+          "last_updated": "2024-02-15T09:00:00Z"
+        }
+      },
+      "error_response": {
+        "status": "error",
+        "error_code": "USER_NOT_FOUND",
+        "message": "User with ID ext_user_99999 not found",
+        "timestamp": "2024-02-15T10:00:00Z"
+      }
+    },
+    "list_users": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "users": [
+            {
+              "user_id": "ext_user_12345",
+              "email": "sarah.johnson@techcorp.com",
+              "first_name": "Sarah",
+              "last_name": "Johnson",
+              "status": "active"
+            },
+            {
+              "user_id": "ext_user_54321",
+              "email": "john.doe@techcorp.com",
+              "first_name": "John",
+              "last_name": "Doe",
+              "status": "active"
+            }
+          ],
+          "pagination": {
+            "total": 150,
+            "page": 1,
+            "per_page": 50,
+            "has_more": true
+          }
+        }
+      }
+    }
+  },
+  "payment_service_api": {
+    "get_subscription": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "subscription_id": "sub_enterprise_456",
+          "customer_id": "cust_67890",
+          "plan": "enterprise",
+          "status": "active",
+          "current_period_start": "2024-02-01T00:00:00Z",
+          "current_period_end": "2024-03-01T00:00:00Z",
+          "amount": 999.99,
+          "currency": "USD",
+          "payment_method": "card_ending_1234"
+        }
+      }
+    },
+    "get_customer_usage": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "customer_id": "cust_67890",
+          "billing_period": "2024-02",
+          "usage_metrics": {
+            "api_calls": 45000,
+            "storage_gb": 125.5,
+            "compute_hours": 89.2
+          },
+          "overage_charges": 150.00,
+          "total_amount": 1149.99
+        }
+      }
+    }
+  }
+}

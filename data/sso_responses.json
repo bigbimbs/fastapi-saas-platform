@@ -1,0 +1,31 @@
+{
+  "azure_ad_response": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "openid profile email",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...",
+    "user_info": {
+      "sub": "11111111-2222-3333-4444-555555555555",
+      "mail": "john.doe@techcorp.com",
+      "givenName": "John",
+      "surname": "Doe",
+      "department": "Engineering",
+      "manager": "jane.smith@techcorp.com"
+    }
+  },
+  "okta_response": {
+    "access_token": "00abcdef123456789...",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "openid profile email",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...",
+    "user_info": {
+      "sub": "00u123456789abcdef",
+      "email": "alice.johnson@startupxyz.com",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "department": "Marketing"
+    }
+  }
+}

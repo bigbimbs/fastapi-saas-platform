@@ -1,0 +1,60 @@
+{
+  "organizations": [
+    {
+      "id": "org_001",
+      "name": "TechCorp Solutions",
+      "subscription_tier": "enterprise",
+      "employee_limit": 1000,
+      "features_enabled": ["sso", "audit_logs", "api_access", "integrations"],
+      "webhook_endpoints": ["https://techcorp.com/webhooks/user-events"],
+      "external_integrations": {
+        "user_service": {"enabled": true, "last_sync": "2024-02-15T09:00:00Z"},
+        "payment_service": {"enabled": true, "last_sync": "2024-02-15T09:30:00Z"}
+      },
+      "created_at": "2023-06-15T10:00:00Z"
+    },
+    {
+      "id": "org_002",
+      "name": "StartupInc",
+      "subscription_tier": "professional", 
+      "employee_limit": 100,
+      "features_enabled": ["audit_logs", "integrations"],
+      "webhook_endpoints": [],
+      "external_integrations": {
+        "communication_service": {"enabled": true, "last_sync": "2024-02-15T08:45:00Z"}
+      },
+      "created_at": "2023-08-20T14:30:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user_001",
+      "email": "admin@techcorp.com",
+      "organization_id": "org_001",
+      "role": "admin",
+      "first_name": "Sarah",
+      "last_name": "Johnson",
+      "external_user_ids": {
+        "user_service": "ext_user_12345",
+        "payment_service": "cust_67890"
+      },
+      "created_at": "2023-06-15T11:00:00Z",
+      "last_login": "2024-02-15T09:30:00Z",
+      "status": "active"
+    },
+    {
+      "id": "user_002",
+      "email": "john.doe@techcorp.com", 
+      "organization_id": "org_001",
+      "role": "user",
+      "first_name": "John",
+      "last_name": "Doe",
+      "external_user_ids": {
+        "user_service": "ext_user_54321"
+      },
+      "created_at": "2023-06-16T10:30:00Z",
+      "last_login": "2024-02-15T08:45:00Z",
+      "status": "active"
+    }
+  ]
+}

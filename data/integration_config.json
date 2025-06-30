@@ -1,0 +1,74 @@
+{
+  "providers": {
+    "user_service": {
+      "name": "User Management Service",
+      "webhook_url": "/webhooks/user-service",
+      "api_base_url": "https://api.userservice.com/v1",
+      "auth_type": "api_key",
+      "secret_key": "user_webhook_secret_123",
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_multiplier": 2,
+        "max_backoff_seconds": 300
+      },
+      "event_types": [
+        "user.created",
+        "user.updated", 
+        "user.deleted",
+        "user.activated",
+        "user.deactivated"
+      ],
+      "rate_limit": {
+        "requests_per_minute": 100,
+        "burst_limit": 20
+      }
+    },
+    "payment_service": {
+      "name": "Payment Processor",
+      "webhook_url": "/webhooks/payment-service", 
+      "api_base_url": "https://api.payments.com/v2",
+      "auth_type": "oauth2",
+      "secret_key": "payment_webhook_secret_456",
+      "retry_policy": {
+        "max_retries": 5,
+        "backoff_multiplier": 1.5,
+        "max_backoff_seconds": 600
+      },
+      "event_types": [
+        "subscription.created",
+        "subscription.updated",
+        "subscription.canceled",
+        "payment.succeeded",
+        "payment.failed",
+        "invoice.created"
+      ],
+      "rate_limit": {
+        "requests_per_minute": 60,
+        "burst_limit": 10
+      }
+    },
+    "communication_service": {
+      "name": "Email & Notification Service",
+      "webhook_url": "/webhooks/communication-service",
+      "api_base_url": "https://api.emailservice.com/v1",
+      "auth_type": "bearer_token",
+      "secret_key": "email_webhook_secret_789", 
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_multiplier": 2,
+        "max_backoff_seconds": 120
+      },
+      "event_types": [
+        "message.sent",
+        "message.delivered",
+        "message.bounced",
+        "message.clicked",
+        "message.opened"
+      ],
+      "rate_limit": {
+        "requests_per_minute": 200,
+        "burst_limit": 50
+      }
+    }
+  }
+}

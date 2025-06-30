@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/saas_platform
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=your-secret-key-change-in-production
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=saas_platform
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Mock external services for testing
+  mock-user-service:
+    image: mockserver/mockserver
+    ports:
+      - "1080:1080"
+    environment:
+      - MOCKSERVER_INITIALIZATION_JSON_PATH=/config/mock-user-service.json
+    volumes:
+      - ./data/mock-user-service.json:/config/mock-user-service.json
+
+  mock-payment-service:
+    image: mockserver/mockserver
+    ports:
+      - "1081:1080"
+    environment:
+      - MOCKSERVER_INITIALIZATION_JSON_PATH=/config/mock-payment-service.json
+    volumes:
+      - ./data/mock-payment-service.json:/config/mock-payment-service.json
+
+  mock-communication-service:
+    image: mockserver/mockserver
+    ports:
+      - "1082:1080"
+    environment:
+      - MOCKSERVER_INITIALIZATION_JSON_PATH=/config/mock-communication-service.json
+    volumes:
+      - ./data/mock-communication-service.json:/config/mock-communication-service.json
+
+volumes:
+  postgres_data:
+  redis_data:

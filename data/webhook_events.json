@@ -1,0 +1,150 @@
+{
+  "user_service_events": [
+    {
+      "event_type": "user.created",
+      "event_id": "evt_user_001",
+      "timestamp": "2024-02-15T10:30:00Z",
+      "organization_id": "org_001",
+      "data": {
+        "user_id": "ext_user_new_123",
+        "email": "new.employee@techcorp.com",
+        "first_name": "Alice",
+        "last_name": "Williams",
+        "department": "Product",
+        "title": "Product Manager",
+        "status": "active",
+        "hire_date": "2024-02-15"
+      },
+      "metadata": {
+        "source": "hr_system",
+        "version": "1.2",
+        "correlation_id": "hr_sync_456"
+      }
+    },
+    {
+      "event_type": "user.updated",
+      "event_id": "evt_user_002", 
+      "timestamp": "2024-02-15T11:15:00Z",
+      "organization_id": "org_001",
+      "data": {
+        "user_id": "ext_user_12345",
+        "changes": {
+          "department": "Engineering",
+          "title": "Senior Software Engineer",
+          "manager_id": "ext_user_67890"
+        },
+        "previous_values": {
+          "department": "Product",
+          "title": "Software Engineer"
+        }
+      },
+      "metadata": {
+        "source": "hr_system",
+        "version": "1.2",
+        "correlation_id": "hr_update_789"
+      }
+    },
+    {
+      "event_type": "user.deleted",
+      "event_id": "evt_user_003",
+      "timestamp": "2024-02-15T12:00:00Z", 
+      "organization_id": "org_001",
+      "data": {
+        "user_id": "ext_user_99999",
+        "email": "former.employee@techcorp.com",
+        "deletion_reason": "employment_terminated",
+        "termination_date": "2024-02-14",
+        "data_retention_policy": "archive_30_days"
+      },
+      "metadata": {
+        "source": "hr_system",
+        "version": "1.2",
+        "correlation_id": "hr_term_101"
+      }
+    }
+  ],
+  "payment_service_events": [
+    {
+      "event_type": "subscription.created",
+      "event_id": "evt_pay_101",
+      "timestamp": "2024-02-15T09:00:00Z",
+      "organization_id": "org_002",
+      "data": {
+        "subscription_id": "sub_new_789",
+        "customer_id": "cust_startup_123",
+        "plan": "professional",
+        "status": "active",
+        "billing_cycle": "monthly",
+        "amount": 299.99,
+        "currency": "USD",
+        "trial_end": "2024-03-15T23:59:59Z"
+      },
+      "metadata": {
+        "source": "billing_system",
+        "version": "2.1",
+        "sales_rep": "rep_456"
+      }
+    },
+    {
+      "event_type": "payment.failed",
+      "event_id": "evt_pay_102",
+      "timestamp": "2024-02-15T10:00:00Z",
+      "organization_id": "org_001",
+      "data": {
+        "payment_id": "pay_failed_789",
+        "subscription_id": "sub_enterprise_456",
+        "amount": 999.99,
+        "currency": "USD",
+        "failure_reason": "insufficient_funds",
+        "failure_code": "card_declined",
+        "retry_at": "2024-02-18T10:00:00Z",
+        "attempt_number": 2
+      },
+      "metadata": {
+        "source": "payment_processor",
+        "version": "2.1",
+        "gateway": "stripe"
+      }
+    }
+  ],
+  "communication_service_events": [
+    {
+      "event_type": "message.delivered",
+      "event_id": "evt_comm_201",
+      "timestamp": "2024-02-15T08:30:00Z",
+      "organization_id": "org_001",
+      "data": {
+        "message_id": "msg_welcome_001",
+        "recipient": "new.employee@techcorp.com",
+        "template": "employee_welcome",
+        "status": "delivered",
+        "delivery_time_ms": 1250,
+        "esp_message_id": "esp_12345"
+      },
+      "metadata": {
+        "source": "email_automation",
+        "version": "1.5",
+        "campaign_id": "onboarding_v2"
+      }
+    },
+    {
+      "event_type": "message.bounced",
+      "event_id": "evt_comm_202",
+      "timestamp": "2024-02-15T08:45:00Z",
+      "organization_id": "org_002",
+      "data": {
+        "message_id": "msg_notification_002",
+        "recipient": "invalid.email@nonexistent.com",
+        "template": "payment_failed",
+        "bounce_reason": "recipient_not_found",
+        "bounce_type": "permanent",
+        "esp_bounce_code": "550"
+      },
+      "metadata": {
+        "source": "transactional_email",
+        "version": "1.5",
+        "notification_type": "billing_alert"
+      }
+    }
+  ]
+}

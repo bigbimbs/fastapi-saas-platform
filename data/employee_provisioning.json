@@ -1,0 +1,76 @@
+{
+  "new_employees": [
+    {
+      "id": "emp_001",
+      "personal_info": {
+        "first_name": "Alex",
+        "last_name": "Chen",
+        "email": "alex.chen@techcorp.com",
+        "phone": "+1-555-0123",
+        "start_date": "2024-03-01"
+      },
+      "role_info": {
+        "title": "Software Engineer",
+        "department": "Engineering", 
+        "manager": "jane.smith@techcorp.com",
+        "team": "Backend Platform",
+        "level": "Senior"
+      },
+      "access_requirements": {
+        "systems": ["github", "jira", "confluence", "aws"],
+        "permissions": ["developer", "code_reviewer"],
+        "security_clearance": "standard"
+      },
+      "equipment_needs": {
+        "laptop": {
+          "type": "MacBook Pro",
+          "specs": "16-inch, M2 Pro, 32GB RAM, 1TB SSD",
+          "accessories": ["external_monitor", "wireless_mouse", "keyboard"]
+        },
+        "software": [
+          "slack",
+          "office365",
+          "docker",
+          "vscode",
+          "postman"
+        ]
+      }
+    },
+    {
+      "id": "emp_002",
+      "personal_info": {
+        "first_name": "Maria",
+        "last_name": "Rodriguez",
+        "email": "maria.rodriguez@techcorp.com", 
+        "phone": "+1-555-0456",
+        "start_date": "2024-03-15"
+      },
+      "role_info": {
+        "title": "Product Manager",
+        "department": "Product",
+        "manager": "david.wilson@techcorp.com",
+        "team": "Core Platform",
+        "level": "Mid"
+      },
+      "access_requirements": {
+        "systems": ["jira", "confluence", "figma", "analytics"],
+        "permissions": ["product_admin", "analytics_viewer"],
+        "security_clearance": "standard"
+      },
+      "equipment_needs": {
+        "laptop": {
+          "type": "MacBook Air",
+          "specs": "13-inch, M2, 16GB RAM, 512GB SSD",
+          "accessories": ["external_monitor"]
+        },
+        "software": [
+          "slack",
+          "office365", 
+          "figma",
+          "notion",
+          "zoom"
+        ]
+      }
+    }
+  ]
+}

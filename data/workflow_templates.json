@@ -1,0 +1,109 @@
+{
+  "workflow_templates": {
+    "software_engineer_onboarding": {
+      "name": "Software Engineer Onboarding",
+      "description": "Complete setup workflow for new software engineers",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Create Apple Business Manager ID",
+          "vendor": "apple_business_manager",
+          "action": "create_managed_apple_id",
+          "parameters": {
+            "email": "{{employee.email}}",
+            "first_name": "{{employee.first_name}}",
+            "last_name": "{{employee.last_name}}"
+          },
+          "retry_count": 3,
+          "depends_on": []
+        },
+        {
+          "id": "step_2",
+          "name": "Create Microsoft 365 Account", 
+          "vendor": "microsoft_365",
+          "action": "create_user_account",
+          "parameters": {
+            "email": "{{employee.email}}",
+            "display_name": "{{employee.first_name}} {{employee.last_name}}",
+            "department": "{{employee.department}}"
+          },
+          "retry_count": 3,
+          "depends_on": []
+        },
+        {
+          "id": "step_3",
+          "name": "Assign Microsoft 365 Licenses",
+          "vendor": "microsoft_365", 
+          "action": "assign_licenses",
+          "parameters": {
+            "user_id": "{{step_2.output.user_id}}",
+            "licenses": ["Microsoft 365 E3", "Visual Studio Professional"]
+          },
+          "retry_count": 2,
+          "depends_on": ["step_2"]
+        },
+        {
+          "id": "step_4",
+          "name": "Invite to Slack",
+          "vendor": "slack_workspace",
+          "action": "invite_user",
+          "parameters": {
+            "email": "{{employee.email}}",
+            "channels": ["#general", "#engineering", "{{employee.team}}"]
+          },
+          "retry_count": 2,
+          "depends_on": ["step_2"]
+        }
+      ],
+      "estimated_duration_minutes": 15,
+      "requires_approval": false
+    },
+    "manager_onboarding": {
+      "name": "Manager Onboarding",
+      "description": "Setup workflow for management roles",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Create Microsoft 365 Account",
+          "vendor": "microsoft_365",
+          "action": "create_user_account",
+          "parameters": {
+            "email": "{{employee.email}}",
+            "display_name": "{{employee.first_name}} {{employee.last_name}}",
+            "department": "{{employee.department}}"
+          },
+          "retry_count": 3,
+          "depends_on": []
+        },
+        {
+          "id": "step_2", 
+          "name": "Assign Manager Licenses",
+          "vendor": "microsoft_365",
+          "action": "assign_licenses", 
+          "parameters": {
+            "user_id": "{{step_1.output.user_id}}",
+            "licenses": ["Microsoft 365 E5", "Power BI Premium"]
+          },
+          "retry_count": 2,
+          "depends_on": ["step_1"]
+        },
+        {
+          "id": "step_3",
+          "name": "Invite to Slack with Admin Privileges",
+          "vendor": "slack_workspace",
+          "action": "invite_user",
+          "parameters": {
+            "email": "{{employee.email}}",
+            "channels": ["#general", "#managers", "#{{employee.department}}"],
+            "admin_privileges": true
+          },
+          "retry_count": 2,
+          "depends_on": ["step_1"]
+        }
+      ],
+      "estimated_duration_minutes": 20,
+      "requires_approval": true,
+      "approval_required_from": ["IT Director", "Department Head"]
+    }
+  }
+}

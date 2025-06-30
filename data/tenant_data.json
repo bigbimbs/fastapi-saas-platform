@@ -1,0 +1,84 @@
+{
+  "tenants": [
+    {
+      "id": "tenant_001",
+      "name": "TechCorp Inc",
+      "domain": "techcorp.com",
+      "plan": "enterprise",
+      "employee_count": 1200,
+      "sso_config": {
+        "provider": "azure_ad",
+        "tenant_id": "12345678-1234-1234-1234-123456789012",
+        "client_id": "87654321-4321-4321-4321-210987654321",
+        "domain": "techcorp.onmicrosoft.com",
+        "attribute_mappings": {
+          "email": "mail",
+          "first_name": "givenName",
+          "last_name": "surname",
+          "department": "department",
+          "manager": "manager"
+        },
+        "role_mappings": {
+          "IT Admin": ["it-admin"],
+          "Manager": ["manager", "team-lead"],
+          "Employee": ["employee"]
+        }
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "tenant_002", 
+      "name": "StartupXYZ",
+      "domain": "startupxyz.com",
+      "plan": "premium",
+      "employee_count": 150,
+      "sso_config": {
+        "provider": "okta",
+        "domain": "startupxyz.okta.com",
+        "client_id": "okta_client_123",
+        "attribute_mappings": {
+          "email": "email",
+          "first_name": "firstName",
+          "last_name": "lastName",
+          "department": "department"
+        },
+        "role_mappings": {
+          "Admin": ["admin"],
+          "User": ["user"]
+        }
+      },
+      "created_at": "2024-02-01T14:30:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user_001",
+      "tenant_id": "tenant_001",
+      "email": "john.doe@techcorp.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "department": "Engineering",
+      "roles": ["employee"],
+      "sso_attributes": {
+        "azure_ad_object_id": "11111111-2222-3333-4444-555555555555",
+        "manager": "jane.smith@techcorp.com"
+      },
+      "created_at": "2024-01-15T11:00:00Z",
+      "last_login": "2024-02-15T09:30:00Z"
+    },
+    {
+      "id": "user_002",
+      "tenant_id": "tenant_001", 
+      "email": "jane.smith@techcorp.com",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "department": "Engineering",
+      "roles": ["manager", "employee"],
+      "sso_attributes": {
+        "azure_ad_object_id": "22222222-3333-4444-5555-666666666666"
+      },
+      "created_at": "2024-01-15T11:15:00Z",
+      "last_login": "2024-02-15T08:45:00Z"
+    }
+  ]
+}

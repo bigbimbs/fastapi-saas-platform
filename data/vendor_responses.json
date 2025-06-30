@@ -1,0 +1,72 @@
+{
+  "apple_business_manager": {
+    "create_managed_apple_id": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "apple_id": "alex.chen@techcorp.com",
+          "person_id": "12345678-90AB-CDEF-1234-567890ABCDEF",
+          "status": "active",
+          "created_date": "2024-02-15T10:30:00Z"
+        }
+      },
+      "error_response": {
+        "status": "error",
+        "error_code": "DUPLICATE_EMAIL",
+        "message": "An Apple ID with this email already exists"
+      }
+    },
+    "assign_device": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "assignment_id": "assign_123456",
+          "device_serial": "C02XY1234567",
+          "assigned_to": "alex.chen@techcorp.com",
+          "assignment_date": "2024-02-15T11:00:00Z"
+        }
+      }
+    }
+  },
+  "microsoft_365": {
+    "create_user_account": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "user_id": "11111111-2222-3333-4444-555555555555",
+          "user_principal_name": "alex.chen@techcorp.com",
+          "display_name": "Alex Chen",
+          "account_enabled": true,
+          "created_date": "2024-02-15T10:45:00Z"
+        }
+      }
+    },
+    "assign_licenses": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "user_id": "11111111-2222-3333-4444-555555555555",
+          "licenses_assigned": [
+            "Microsoft 365 E3",
+            "Power BI Pro"
+          ],
+          "assignment_date": "2024-02-15T11:15:00Z"
+        }
+      }
+    }
+  },
+  "slack_workspace": {
+    "invite_user": {
+      "success_response": {
+        "status": "success",
+        "data": {
+          "user_id": "U1234567890",
+          "email": "alex.chen@techcorp.com",
+          "invitation_sent": true,
+          "channels_joined": ["#general", "#engineering", "#backend-platform"],
+          "invite_date": "2024-02-15T12:00:00Z"
+        }
+      }
+    }
+  }
+}
